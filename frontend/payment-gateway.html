@@ -147,55 +147,55 @@
     </div>
     
     <script>
-        // Get pending payment amount from localStorage
+
         const pendingCredits = localStorage.getItem('pendingCredits') || 0;
         document.getElementById('paymentAmount').textContent = pendingCredits + ' Credits';
         
-        // Handle card number formatting
+       
         document.getElementById('cardNumber').addEventListener('input', function(e) {
-            // Remove non-digit characters
+            
             let value = this.value.replace(/\D/g, '');
-            // Add space after every 4 digits
+            
             value = value.replace(/(\d{4})(?=\d)/g, '$1 ');
             this.value = value;
         });
         
-        // Handle expiry date formatting
+      
         document.getElementById('expiryDate').addEventListener('input', function(e) {
-            // Remove non-digit characters
+            
             let value = this.value.replace(/\D/g, '');
-            // Format as MM/YY
+            
             if (value.length > 2) {
                 value = value.substring(0, 2) + '/' + value.substring(2);
             }
             this.value = value;
         });
         
-        // CVV should only allow numbers
+       
         document.getElementById('cvv').addEventListener('input', function(e) {
             this.value = this.value.replace(/\D/g, '');
         });
         
-        // Handle form submission
+        
         document.getElementById('paymentForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Validate form
+            
             if (!validateForm()) {
                 return;
             }
             
-            // Set payment as successful
+            
             localStorage.setItem('paymentSuccess', 'true');
             
-            // Redirect back to main app
+            
             document.getElementById('confirmPayment').textContent = 'Processing...';
             setTimeout(() => {
                 window.location.href = 'index.html';
             }, 1500);
         });
         
-        // Validate form
+        
         function validateForm() {
             const cardName = document.getElementById('cardName').value;
             const cardNumber = document.getElementById('cardNumber').value.replace(/\s/g, '');
@@ -225,7 +225,7 @@
             return true;
         }
         
-        // Handle cancel button
+        
         document.getElementById('cancelPayment').addEventListener('click', function() {
             localStorage.removeItem('pendingCredits');
             window.location.href = 'index.html';
