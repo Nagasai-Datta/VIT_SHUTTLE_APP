@@ -28,7 +28,7 @@ app.post('/login', (req, res) => {
     const { userId, password } = req.body;
 
     // Find the user in the hardcoded list
-    const user = users.find(u => u.userId === userId && u.password === password);
+    const user = users.find(u => u.userId === userId && u.password === password); // comparing userId and password with set userID and password
 
     if (user) {
         res.json({ success: true, message: 'Login successful', wallet: user.wallet });
