@@ -15,7 +15,7 @@ app.use(cors({
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-
+//mock database 
 const users = [
     { userId: '1234', password: '1234', wallet: 77 }
 ];
